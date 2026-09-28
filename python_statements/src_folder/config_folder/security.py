@@ -17,6 +17,6 @@ def change_pass(engine, user: str, new_pass: str):
 
 if __name__ == "__main__":
     # Sustituye por tu nueva contraseña deseada
-    NUEVA_CONTRASEÑA = "Ingeniero_99"
+    NUEVA_CONTRASEÑA = ""
     
     change_pass(engine, "danny_tovias", NUEVA_CONTRASEÑA) 
