@@ -1,6 +1,6 @@
 from sqlalchemy import text
 from python_statements.src_folder.config_folder.connection_engine import engine
-from python_statements.src_folder.extract_tables.extract_productos_table import extraer_tabla_productos
+from python_statements.src_folder.extract_tables.extract_table import extraer_tabla
 import pandas as pd
 import re
 import os
@@ -23,8 +23,14 @@ def limpiar_tabla_productos(df: pd.DataFrame,) -> pd.DataFrame:  # Define la fun
     columnas_texto = df_silver.select_dtypes(include=['object', 'string']).columns
     # recorremos columnas_texto para transformar los nombres de columnas que sean 'object' o 'string', los cambiamos a texto y aplicamos la sustitución Regex para eliminar espacios en blanco
     for col in columnas_texto:
+        # .apply: toma el valor de la primera celda de la columna [col] y le pasa ese valor a lambda
+        # lambda es una keyword de python para referirse a funciones rápidas, x en un DataFrame, es el argumento (el valor de la celda actual) y, ':' separa los argumentos de la acción
+        # la r antes de '\s', es "raw string": Su función principal es decirle a Python que ignore las secuencias de escape (como \n, \t o \s) y las trate como caracteres de texto literales.
+        #  '\s': patrón buscado(espacio en blanco) y '+' es uno o más de esos patrones. [' '] es el reemplazo, un único espacio limpio.
+        # finalmente le quita los espacios sobrantes de los extremos con .strip()
         df_silver[col] = (df_silver[col].astype(str).apply(lambda x: re.sub(r'\s+', ' ', x).strip()))
-
+        df_silver[col] = df_silver[col].replace(['nan', 'None'], None)
+        
     if ('id_categoria' in df_silver.columns):  # Verifica existencia de 'id_categoria'.
         df_silver['id_categoria'] = df_silver['id_categoria'].astype(int)  # Fuerza el tipo de dato a entero (integer).
     if ('precio_base_producto' in df_silver.columns):  # Verifica existencia de 'precio_base_producto'.
@@ -55,7 +61,7 @@ def guardar_a_parquet_local( df: pd.DataFrame, ruta_destino: str) -> None:
 
 if __name__ == "__main__":
     # 1. Extracción (Capa Bronze)
-    df_raw = extraer_tabla_productos(engine)
+    df_raw = extraer_tabla(engine, 'productos')
     # 2. Transformación y Limpieza (Capa Silver)
     df_clean = limpiar_tabla_productos(df_raw)
     # 3. Definir ruta local para almacenar el resultado

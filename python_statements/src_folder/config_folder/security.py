@@ -19,4 +19,4 @@ if __name__ == "__main__":
     # Sustituye por tu nueva contraseña deseada
     NUEVA_CONTRASEÑA = ""
     
-    change_pass(engine, "danny_tovias", NUEVA_CONTRASEÑA) 
+    change_pass(engine, "danny_tovias", NUEVA_CONTRASEÑA)
