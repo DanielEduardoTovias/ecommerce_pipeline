@@ -6,17 +6,12 @@ df = pd.DataFrame
 
 
 def transform_to_int(df):
-    columnas_enteros = df.select_dtypes(include='int').columns #seleccionar las columnas sean tipo float y obtenemos el nombre
+    columnas_enteros = df.select_dtypes(include='int').columns #seleccionar las columnas sean tipo int
     for i in columnas_enteros:
         df[i] = pd.to_numeric(df[i], downcast='integer') # downcast es para reducir el uso de memoria: int64 -> int8
     return df
 
-def transform_to_float(df):
-    #columnas_decimal = df.select_dtypes(include=['float']).columns
-    #df = (df[f].astype(float) for f in columnas_decimal)
-    #for f in columnas_decimal:
-        #df[f] = (df[f].astype(float))
-    return df
+
 
 
 def transform_to_string(df):

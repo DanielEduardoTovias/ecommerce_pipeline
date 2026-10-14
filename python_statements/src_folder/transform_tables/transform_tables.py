@@ -4,7 +4,6 @@ from sqlalchemy import text
 from python_statements.src_folder.config_folder.connection_engine import engine
 from python_statements.src_folder.extract_tables.extract_table import extraer_tabla
 from python_statements.src_folder.transform_tables.datatypes_transform.to_datatype import transform_to_int
-from python_statements.src_folder.transform_tables.datatypes_transform.to_datatype import transform_to_float
 from python_statements.src_folder.transform_tables.datatypes_transform.to_datatype import transform_to_string
 
 import pandas as pd
@@ -22,12 +21,9 @@ def limpiar_tablas(df: pd.DataFrame,) -> pd.DataFrame:  # Define la función de 
     df_silver = (df.copy())  # Genera una copia en memoria del DataFrame 'df' en la variable 'df_silver'.
     # 2. Estandarizar nombres de columnas a minúsculas y sin espacios: [list comprehension]
     df_silver.columns = [str(col).strip().lower() for col in df_silver.columns]   # Recorre cada encabezado, quita espacios en extremos con .strip() y convierte a minúsculas con .lower().
-
     transform_to_string(df_silver)
-    transform_to_float(df_silver)
     transform_to_int(df_silver)
-   
-
+    
     return df_silver
 
 
@@ -52,7 +48,7 @@ def guardar_a_parquet_local( df: pd.DataFrame, ruta_destino: str) -> None:
 
 if __name__ == "__main__":
 
-    carpeta_parquet = Path(__file__).resolve().parents[3]
+    carpeta_parquet = Path("E:\SQL_proyecto\parquet_files")
     for table in table_names:
     # 1. Extracción (Capa Bronze)
         df_raw = extraer_tabla(engine, table)
