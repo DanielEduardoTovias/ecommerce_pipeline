@@ -3,4 +3,4 @@ __pychache/
 *.env
 *.parquet
 E:\SQL_proyecto\python_statements\insert_tables
-E:\SQL_proyecto\python_statements\src_folder\read_parquets\read_parquet.py
+E:\SQL_proyecto\python_statements\src_folder\read_parquets
