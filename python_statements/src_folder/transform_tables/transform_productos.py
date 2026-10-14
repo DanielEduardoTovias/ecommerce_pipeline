@@ -7,7 +7,6 @@ import os
 
 
 
-
 def limpiar_tabla_productos(df: pd.DataFrame,) -> pd.DataFrame:  # Define la función de limpieza que recibe un DataFrame y retorna un DataFrame transformado.
     
     """Capa Silver: Limpieza de texto con Regex y estandarización de tipos de datos."""
@@ -60,8 +59,10 @@ def guardar_a_parquet_local( df: pd.DataFrame, ruta_destino: str) -> None:
 # -------------------- Ejecución del flujo completo --------------------
 
 if __name__ == "__main__":
-    # 1. Extracción (Capa Bronze)
-    df_raw = extraer_tabla(engine, 'productos')
+    
+        
+# 1. Extracción (Capa Bronze)
+    df_raw = extraer_tabla(engine)
     # 2. Transformación y Limpieza (Capa Silver)
     df_clean = limpiar_tabla_productos(df_raw)
     # 3. Definir ruta local para almacenar el resultado
