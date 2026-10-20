@@ -14,6 +14,6 @@ def extraer_tabla(engine, nombre_tabla):
 
 if __name__ == "__main__":
 
-    df = extraer_tabla(engine, 'productos')
+    df = extraer_tabla(engine, 'clientes')
 
     print(df)

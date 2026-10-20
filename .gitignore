@@ -1,7 +1,18 @@
-__pychache/ 
-*.pyc 
-*.env
-*.parquet
-python_statements/insert_tables
-python_statements/src_folder/read_parquets/
+# Caché de Python
+__pycache__/
+*.py[cod]
 
+# Variables de entorno y credenciales
+.env
+*.env
+
+# Entornos virtuales
+.venv/
+
+# Archivos temporales del proyecto
+*.parquet
+tests.ipynb
+help_codes/
+
+
+python_statements/src_folder/read_parquets/
