@@ -13,9 +13,9 @@ def insertingData():
         conn.execute(clientes.insert(), new_client)
         if(len(new_client) == 1):
             print(
-                    f"¡Se insertó {len(new_client)} producto correctamente en la base de datos!")
+                    f"¡Se insertó {len(new_client)} cliente correctamente en la base de datos!")
         else:
-            print(f"¡Se insertaron {len(new_client)} productos correctamente en la base de datos!")
+            print(f"¡Se insertaron {len(new_client)} clientes correctamente en la base de datos!")
 
 
 
