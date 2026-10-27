@@ -7,13 +7,8 @@ from pyspark.sql import SparkSession
 
 
 
-def sparkSession():    
-    # Crear la estructura de binarios simulada para calmar a Hadoop en Windows
-    #hadoop_temp_dir = Path(tempfile.gettempdir()) / "hadoop_local"
-    #bin_dir = hadoop_temp_dir / "bin"
-    #bin_dir.mkdir(parents=True, exist_ok=True)
-    #os.environ["HADOOP_HOME"] = str(hadoop_temp_dir)
-    #os.environ["hadoop.home.dir"] = str(hadoop_temp_dir)    
+def sparkSession():       
+
     
     spark = SparkSession.builder \
         .appName("First_Session") \
