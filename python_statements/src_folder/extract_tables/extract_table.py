@@ -8,12 +8,14 @@ def extraer_tabla(engine, nombre_tabla):
     #query = text("SELECT * FROM {nombre_tabla}")
     #with engine.connect() as conn:
         #df_productos = pd.read_sql(query, conn) # pd.read_sql toma la consulta y la conexión, y REGRESA UN DATAFRAME
-    
     return pd.read_sql_table(nombre_tabla, con=engine) # función de pandas para extraer una tabla completa sin filtros, ahorra escribir la consulta y conexión manualmente
 
 
 if __name__ == "__main__":
 
-    df = extraer_tabla(engine, 'productos')
+    df = extraer_tabla(engine, 'clientes')
 
     print(df)
+
+
+    
