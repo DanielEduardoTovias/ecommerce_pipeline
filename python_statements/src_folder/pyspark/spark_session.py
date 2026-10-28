@@ -1,15 +1,8 @@
-import os
-from pathlib import Path
-import tempfile
 from pyspark.sql import SparkSession
-
-# --- PARCHE PARA WINDOWS (Evita buscar winutils.exe) ---
-
-
 
 def sparkSession():       
 
-    
+    #Se crea la sesión spark    
     spark = SparkSession.builder \
         .appName("First_Session") \
         .master("local[*]") \
