@@ -13,8 +13,7 @@ def extraer_tabla(engine, nombre_tabla):
 
 if __name__ == "__main__":
 
-    df = extraer_tabla(engine, 'direccion_cliente')
+    df = extraer_tabla(engine, 'variantes_producto')
 
     print(df)
-
 

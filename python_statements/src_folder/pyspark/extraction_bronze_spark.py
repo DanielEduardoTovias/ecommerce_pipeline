@@ -3,7 +3,7 @@ import string
 from python_statements.src_folder.config_folder.connection_engine import engine
 import pandas as pd
 
-table_names = ['productos', 'variantes_producto', 'clientes', 'direccion_cliente', 'paqueterias', 'categorias', 'tipo_direccion']
+table_names = ['productos', 'variantes_producto', 'clientes', 'pedidos', 'lineas_pedido', 'direccion_cliente', 'paqueterias', 'pago', 'categorias', 'tipo_direccion']
 def extraer_tabla(engine, nombre_tabla):
     #query = text("SELECT * FROM {nombre_tabla}")
     #with engine.connect() as conn:

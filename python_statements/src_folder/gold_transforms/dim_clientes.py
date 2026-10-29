@@ -29,10 +29,10 @@ df_dir_completa = df_direcciones.merge(df_tipos_dir, on="id_tipo_direccion", how
 df_dim_clientes = df_clientes.merge(df_dir_completa, on="id_cliente", how="left")
 
 
-#5. Eliminamos clientes duplicados:
+#4. Eliminamos clientes duplicados:
 df_dim_clientes = df_dim_clientes.drop_duplicates(subset=["id_cliente"])
 
-#6. Guardamos la tabla dimensional en la capa gold:
+#5. Guardamos la tabla dimensional en la capa gold:
 output_path = gold_dir / "dim_clientes.parquet"
 df_dim_clientes.to_parquet(output_path, index=False)
 

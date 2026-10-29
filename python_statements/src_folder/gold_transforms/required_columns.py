@@ -1,0 +1,16 @@
+columnas_fact = [
+    "id_linea",
+    "id_pedido",
+    "id_cliente",
+    "id_variante",
+    "id_direccion_cliente",
+    "id_paqueteria",
+    "cantidad",
+    "precio_unitario",
+    "subtotal",
+    "total_pagado",
+    "metodo_pago",
+    "status_pedido",
+    "fecha_pedido",
+    "fecha_entrega_pedido",
+]

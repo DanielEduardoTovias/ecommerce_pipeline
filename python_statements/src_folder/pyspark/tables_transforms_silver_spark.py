@@ -3,7 +3,8 @@ from python_statements.src_folder.pyspark.spark_session import sparkSession
 from python_statements.src_folder.pyspark.datatype_transform_spark.to_datatype_spark import transform_to_int_pyspark
 from python_statements.src_folder.pyspark.datatype_transform_spark.to_datatype_spark import transform_to_string_pyspark
 
-table_names = ['productos', 'variantes_producto', 'clientes', 'direccion_cliente', 'paqueterias', 'categorias', 'tipo_direccion']
+table_names = ['productos', 'variantes_producto', 'clientes', 'pedidos', 'lineas_pedido', 'direccion_cliente', 'paqueterias', 'pago', 'categorias', 'tipo_direccion']
+
 
 def limpiar_tablas_pyspark(df):
     # Aplicar transformaciones modulares

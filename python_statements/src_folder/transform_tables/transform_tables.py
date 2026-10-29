@@ -13,7 +13,7 @@ import os
 
 
 
-table_names = ['productos', 'variantes_producto', 'clientes', 'direccion_cliente', 'paqueterias', 'categorias', 'tipo_direccion']
+table_names = ['productos', 'variantes_producto', 'clientes', 'pedidos', 'lineas_pedido', 'direccion_cliente', 'paqueterias', 'pago', 'categorias', 'tipo_direccion']
 def limpiar_tablas(df: pd.DataFrame,) -> pd.DataFrame:  # Define la función de limpieza que recibe un DataFrame y retorna un DataFrame transformado.
     
     #   ------ Limpieza de texto con Regex y estandarización de tipos de datos.
