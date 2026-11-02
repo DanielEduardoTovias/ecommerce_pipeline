@@ -12,7 +12,9 @@ def extraer_tabla(engine, nombre_tabla):
 
 if __name__ == "__main__":
     ROOT_DIR = Path(__file__).resolve().parents[3]
-    carpeta_bronze = ROOT_DIR / "parquet_files"
+    carpeta_landing = ROOT_DIR / "parquet_files" / "landing_zone"
+
+    carpeta_landing.mkdir(parents=True, exist_ok=True)
     
     for table in table_names:
         print(f"Extrayendo {table} de la BD a Bronze...")
@@ -31,9 +33,9 @@ if __name__ == "__main__":
 
         
         # 2. Definir ruta Bronze
-        ruta_bronze = carpeta_bronze / f"{table}.parquet"
+        ruta_landing_zone = carpeta_landing / f"{table}.parquet"
         
         # 3. Guardar crudo en Parquet sin transformar
-        df_raw.to_parquet(ruta_bronze, index=False)
-        print(f"-> Guardado en Bronze: {ruta_bronze}")
+        df_raw.to_parquet(ruta_landing_zone, index=False)
+        print(f"-> Guardado en Bronze: {ruta_landing_zone}")
 

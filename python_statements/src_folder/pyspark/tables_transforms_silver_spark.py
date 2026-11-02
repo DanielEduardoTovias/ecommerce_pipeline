@@ -19,11 +19,11 @@ if __name__ == "__main__":
     
     # Definir rutas usando Path de Python (con r"" para evitar problemas con las barras invertidas)
     ROOT_DIR = Path(__file__).resolve().parents[3]
-    carpeta_bronze = ROOT_DIR / "parquet_files"
-    carpeta_silver = ROOT_DIR / "parquet_files" / "silver"
+    carpeta_landing = ROOT_DIR / "parquet_files" / "landing_zone"
+    carpeta_curated = ROOT_DIR / "parquet_files" / "curated_zone"
     
     # Asegurar que la carpeta silver exista
-    carpeta_silver.mkdir(parents=True, exist_ok=True)
+    carpeta_curated.mkdir(parents=True, exist_ok=True)
     
     for table in table_names:
         try:
@@ -31,19 +31,19 @@ if __name__ == "__main__":
             print(f"\nProcesando tabla: {table}")
             
             # 1. Extracción (Capa Bronze): Apuntar a la ruta completa del archivo Parquet crudo
-            ruta_bronze = str(carpeta_bronze / f"{table}.parquet")
-            df_raw = spark.read.parquet(ruta_bronze)
+            ruta_landing = str(carpeta_landing / f"{table}.parquet")
+            df_raw = spark.read.parquet(ruta_landing)
             
             # 2. Transformación y Limpieza (Capa Silver)
             df_clean = limpiar_tablas_pyspark(df_raw)
             
             # 3. Definir ruta local para almacenar el resultado en Silver
-            ruta_silver = str(carpeta_silver / f"{table}.parquet")
+            ruta_curated_zone = str(carpeta_curated / f"{table}.parquet")
             
             # 4. Exportar a Parquet (Capa Silver)
             
-            df_clean.toPandas().to_parquet(ruta_silver, index=False)
-            print(f"-> Guardado exitoso en Silver: {ruta_silver}")
+            df_clean.toPandas().to_parquet(ruta_curated_zone, index=False)
+            print(f"-> Guardado exitoso en Silver: {ruta_curated_zone}")
         except Exception as e:
             print(f"ERROR procesando la tabla '{table}': {str(e)}")
             continue
